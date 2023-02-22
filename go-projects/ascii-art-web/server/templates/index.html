@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/src/style/main.css" type="text/css">
+        <title>ASCII-ART-WEB</title>
+    </head>
+    <body>
+        <h1 class="title">ASCII-ART-WEB</h1>
+        <form   action="/ascii-art" method="POST"> <!--modified method to post--> 
+            <label class="txtinp">
+                Input Text To Artify:<br>
+                <textarea type="text" autofocus="autofocus" name="inputString" placeholder="{{.PlaceHolder}}"></textarea><br><hr>
+            </label>
+            <input checked="checked" type="radio" name="banner_style" value="standard">
+            <label class="txtinp" for="standard">Standard</label>
+            <input type="radio" name="banner_style" value="shadow">
+            <label class="txtinp" for="shadow">Shadow</label>
+            <input type="radio" name="banner_style" value="thinkertoy">
+            <label class="txtinp" for="thinkertoy">Thinkertoy</label><br><br>
+            <button class="button" type="submit">Submit</button>
+            </form>
+        <pre style="background:white">{{.AsciiArt}}</pre>
+    </body>
+</html>

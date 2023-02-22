@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/category.css"/>
+    <link rel="stylesheet" href="../css/nav.css">
+    <title>The Bored Board</title>
+</head>
+
+<body>
+    {{ template "nav.html" . }}
+    <div class="separate-box">
+        <div class="box">
+            <h1>Categories</h1>
+            <h2><ul class="category-list" id="category-list"></h2>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const categoryList = document.getElementById('category-list');
+        const tags = {{ .Data.TagsJS }};
+        const tagCount = new Map();
+        tags.forEach(tag => {
+            if (tagCount.has(tag)) {
+                tagCount.set(tag, tagCount.get(tag) + 1);
+            } else {
+                tagCount.set(tag, 1);
+            }
+        });
+        const maxCount = Math.max(...tagCount.values());
+        tagCount.forEach((count, tag) => {
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="/categories/${tag}">${tag}</a>`;
+            li.style.fontSize = `${count / maxCount * 350}%`;
+            categoryList.appendChild(li);
+        });
+    </script>
+</body>
+

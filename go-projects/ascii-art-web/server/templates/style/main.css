@@ -1,0 +1,16 @@
+* {
+    text-align: center;
+}
+
+body {
+    background-color: rgb(16, 16, 233)
+}
+
+.title {
+    color:rgb(139, 6, 248);
+    background-color: rgb(0, 10, 7);
+}
+
+.txtinp {
+    color:aliceblue
+}

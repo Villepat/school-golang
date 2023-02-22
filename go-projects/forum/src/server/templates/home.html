@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/category.css">
+    <title>The Bored Board</title>
+</head>
+
+<body>
+    {{ template "nav.html" . }}
+    <div class="separate-box">
+        <label for="filterByCreated">Filter by creation date:</label>
+        <select name="filterByCreated" id="filterByCreated" class="datedropdown">
+        <option disabled="disabled" hidden selected class="datedropdown">--Choose One Option--</option>
+            <option class="datedropdown" value="0">All time</option>
+            <option class="datedropdown" value="4">Last minute</option>
+            <option class="datedropdown" value="1">Last 7 days</option>
+            <option class="datedropdown" value="2">Last 30 days</option>
+            <option class="datedropdown" value="3">Last 3 months</option>
+        </select>
+        {{ range .Data.Topics }}
+        <div id="{{.Id}}" class="subject">
+            <a class="link" href="/{{.Author}}/{{.Id}}/{{.URL}}">
+                <div class="subjectContainer">
+                    <div class="container-left-column">
+                        <img src="../imgs/dog.jpg">
+                        <div class="container-center-column">
+                            <p class="title">
+                            <h1>{{.Title | html}}</h1>
+                            <p>
+                            <h2>by {{.Author | html}}</h2>
+                            </p>
+                        </div>
+                    </div>
+                    <ul class="post-category-tags">
+                        <p style="text-align: right;">Tags: {{ .Tags | html }}</p>
+
+                        <p style="text-align: right;">{{ .Views | html }} Views</p>
+                        <p style="text-align: right;">{{ .Len_Comments | html }} Comments</p>
+                        <p style="text-align: right;">{{ .Likes | html }} Likes</p>
+                    </ul>
+                </div>
+            </a>
+        </div>
+        {{end}}
+    </div>
+    <script src="../js/home.js"></script>
+</body>
+
+</html>

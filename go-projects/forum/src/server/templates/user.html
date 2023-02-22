@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/user_profile.css">
+    <title>The Bored Board</title>
+</head>
+
+<body> 
+    {{ template "nav.html" . }}
+<div class="card">
+    <h3 class="profile-name">Username: {{ index .Data.Data 0}}</h3>
+    <p>Email: {{ index .Data.Data 1}}</p>
+    <p class="about">The Bored Board member since: {{ index .Data.Data 2}}</p>
+    {{if .Data.Posts}}
+    <button class="button" onclick="showURLs()">Show Your Posts</button>
+    <div id="urls" style="display:none">
+        <h3>Posts</h3>
+        <ul>
+            {{ range .Data.Posts }}
+            <li><a href="/{{.Author}}/{{.Id}}/{{.URL}}">{{ .Title | html }}</a></li>
+            {{ end }}
+        </ul>
+        <button class="button" onclick="hideURLs()">Hide Your Posts</button>
+    </div>
+    {{end}}
+    {{ if or .Data.Likes .Data.CommentLikes}}
+    <button class="button" onclick="showLikes()">Show Your Likes</button>
+    <div id="likes" style="display:none">
+        {{ if .Data.Likes }}
+        <h3>Liked Posts</h3>
+        <ul>
+            {{ range .Data.Likes }}
+            <li><a href="/{{.Author}}/{{.Id}}/{{.URL}}">{{ .Title | html }}</a></li>
+            {{ end }}
+        </ul>
+        {{end}}
+        {{ if .Data.CommentLikes }}
+        <h3>Liked Comments</h3>
+        <ul>
+            {{ range .Data.CommentLikes }}
+            <li><a href="/{{.Author}}/{{.Id}}/{{.URL}}">{{ .Title | html}} </a></li>
+            {{end}}
+        </ul>
+        {{end}}
+        <button class="button" onclick="hideLikes()">Hide Your Likes</button>
+    </div>
+    {{end}}
+    <script>
+        function showLikes() {
+            var x = document.getElementById("likes");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function hideLikes() {
+            var x = document.getElementById("likes");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+    <script>
+        function showURLs() {
+            var x = document.getElementById("urls");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+        function hideURLs() {
+            var x = document.getElementById("urls");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
+    
+
+</div>
+</body>
+</html>
+ 

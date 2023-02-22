@@ -1,0 +1,14 @@
+<ul id="navbar" class="navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/categories">Categories</a></li>
+    <div class="navbar-right">
+        {{ if .LoggedIn }}
+        <li><a class="user" href="/user">{{ .Username }}</a></li>
+        <li><a class="create" href="/create">Create</a></li>
+        <li><a class="active" href="/logout">Log Out</a></li>
+        {{else}}
+        <li><a class="active" href="/login">Log In</a></li>
+        <li><a class="active" href="/register">Register</a></li>
+        {{end}}
+    </div>
+</ul>

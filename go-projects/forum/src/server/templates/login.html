@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/nav.css">
+    <title>The Bored Board</title>
+</head>
+
+<body>
+    {{template "nav.html"}}
+    <div class="login">
+        <form id="loginForm">
+            <div class="form">
+                <h3 class="h3"> Log In: </h3>
+                <div class="inputs">
+                    <input type="text" id="username" name="username" placeholder="Email or username" />
+                    <input type="password" id="password" name="password" placeholder="Password" />
+                </div>
+                <p class="errorNotification">Incorrect username or password</p>
+                <input type="submit" value="Log In" id="buttonsubmit" />
+            </div>
+        </form>
+    </div>
+    <script src="../js/login.js"></script>
+</body>
+
+</html>

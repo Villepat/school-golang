@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/index.css" />
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/post.css">
+    <link rel="stylesheet" href="/css/category.css"/>
+    <title>{{ .Data.Title }}</title>
+</head>
+
+<body>
+    {{ template "nav.html" . }}
+
+    <div class="main-post">
+        <div class="separate-box">
+            <div class="box">
+                
+            </div>
+        </div>
+
+        <div class="post-header">
+            <div class="title-author">
+                <h2 class="post-title">{{ .Data.Title | html }}</h2>
+                <h3 class="post-author">by {{ .Data.Author | html }}</h3>
+            </div>
+            <h3 class="post-time">{{ .Data.CreationDate }}</h3>
+            <br>
+            <ul class="category-list">
+                {{range .Tags}}<a href="/categories/{{ . }}"><li>{{. | html }}</li></a>{{end}}
+            </ul>
+        </div>
+        <div class="post-content">
+            <h3>{{ .Data.Content | html }}</h3>
+            {{ if .LoggedIn }}
+            <div class="likeDislike">
+                {{ if eq .Data.LikeStatus 1 }}
+                    <a href="/liked/{{.Data.Id}}/post"><div class="up">Like {{.Data.Likes}}</div></a>
+                    <a href="/disliked/{{.Data.Id}}/post"><div class="neutral-down">Dislike {{.Data.Dislikes}}</div></a>
+                {{ else if eq .Data.LikeStatus -1 }}
+                    <a href="/liked/{{.Data.Id}}/post"><div class="neutral-up">Like {{.Data.Likes}}</div></a>
+                    <a href="/disliked/{{.Data.Id}}/post"><div class="down">Dislike {{.Data.Dislikes}}</div></a>
+                {{ else }}
+                    <a href="/liked/{{.Data.Id}}/post"><div class="neutral-up">Like {{.Data.Likes}}</div></a>
+                    <a href="/disliked/{{.Data.Id}}/post"><div class="neutral-down">Dislike {{.Data.Dislikes}}</div></a>
+                {{ end}}
+            </div>
+            {{ if eq .Data.Author .Username }}
+            <div class="post-delete">
+                <form id="delete-post">
+                    <input type="submit" value="Delete" id="delete-submit" />
+                </form>
+                <br>
+            </div>
+            {{ end }}
+            {{ else }}
+            <p>Likes: {{.Data.Likes}} Dislikes: {{.Data.Dislikes}}</p>
+            {{ end }}
+            
+        </div>
+
+    </div>
+
+    <div id="comment" class="main-post">
+        {{ if .LoggedIn }}
+        <form id="post-comment">
+            <h3>Comment</h3>
+                <textarea id="comment-text" name="comment-text" rows="5" cols="50"></textarea>
+                <div>
+                    <input type="submit" value="Submit" id="comment-submit" />
+                </div>
+        </form>
+        {{ end }}
+
+        <div id="comment-list">
+            <h3>Comments</h3>
+            {{ range .Data.Comments }}
+            <div class="comment">
+                <div class="post-header">
+                    <h4 class="post-author">{{ .Author | html }}</h4>
+                    <h5 class="post-time">{{ .CreationDate }}</h5>
+                </div>
+                <div class="post-content">
+                    <p>{{ .Content | html }}</p>
+                    {{ if .LoggedIn }}
+                    <div class="likeDislike">
+                        {{ if eq .LikeStatus 1 }}
+                            <a href="/liked/{{.Id}}/comment"><div class="up">Like {{.Likes}}</div></a>
+                            <a href="/disliked/{{.Id}}/comment"><div class="neutral-down">Dislike {{.Dislikes}}</div></a>
+                        {{ else if eq .LikeStatus -1 }}
+                            <a href="/liked/{{.Id}}/comment"><div class="neutral-up">Like {{.Likes}}</div></a>
+                            <a href="/disliked/{{.Id}}/comment"><div class="down">Dislike {{.Dislikes}}</div></a>
+                        {{ else }}
+                            <a href="/liked/{{.Id}}/comment"><div class="neutral-up">Like {{.Likes}}</div></a>
+                            <a href="/disliked/{{.Id}}/comment"><div class="neutral-down">Dislike {{.Dislikes}}</div></a>
+                        {{ end}}
+                    </div>
+                    {{ end }}
+
+                </div>
+
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <script src="/js/post.js"></script>
+</body>
+
+</html>

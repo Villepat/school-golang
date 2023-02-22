@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap');
+
+/* navbar */
+.navbar { 
+    list-style: none;
+    margin-right: 0.938rem;
+    padding: 0px;
+    border-radius: 05px;
+    background-color: rgb(83, 83, 83);
+    text-decoration: none;
+    overflow: auto;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    transition: background-color 0.5s ease;
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 0.9375rem 1.25rem;
+}
+
+.navbar li a:hover{
+    transition: background-color 0.5s ease;
+    background-color:rgb(63, 63, 63);
+    color:white;
+}
+
+.active {
+   background-color: rgb(42, 42, 42);
+}
+
+.create {
+    transition: background-color 0.5s ease;
+    background-color: rgb(0, 81, 0);
+}
+
+.navbar li a .create:hover {
+    transition: background-color 0.5s ease;
+    background-color: rgb(0, 175, 0)
+}
+
+.navbar-right {
+    float: right;
+}
+
+.tagcloud a.tag-1 {
+    font-size: small;
+}
+
+.tagcloud a.tag-2 {
+    font-size: medium;
+}
+
+.tagcloud a.tag-3 {
+    font-size: large;
+}

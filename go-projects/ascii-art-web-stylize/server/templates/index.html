@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge, chrome=1">
+        <link rel="stylesheet" href="/src/style/main.css" type="text/css">
+        <title>ASCII-ART-WEB</title>
+    </head>
+    <body>
+        <div id="particles-js">
+            <div class="container">
+            
+                <h1 class="title"><span style="background: linear-gradient (purple, red)">ASCII-ART-WEB</span></h1>
+        
+                <form action="/ascii-art" method="POST"> <!--modified method to post--> 
+                        <label>
+                            <span class="txtinp">Text To Artify:</span><br><br>
+                            <textarea class="textinput" type="text" rows=4 cols=30% autofocus="autofocus" name="inputString" placeholder="{{.PlaceHolder}}" style="color:black"></textarea><br><br>
+                        </label>
+                        <div class="radio">
+                            <input checked="checked" type="radio" name="banner_style" value="standard">
+                            <label class="txtinp" for="standard">Standard</label>
+                            <input type="radio" name="banner_style" value="shadow">
+                            <label class="txtinp" for="shadow">Shadow</label>
+                            <input type="radio" name="banner_style" value="thinkertoy">
+                            <label class="txtinp" for="thinkertoy">Thinkertoy</label><br><br>
+                        </div>
+                            <button class="button" type="submit">Render</button>
+                </form>
+                <div class="result" class="item1">
+                    <pre>{{.AsciiArt}}</pre>
+                </div>
+            </div>
+        </div>
+    </body>   
+    <script type="text/javascript" src="src/js/particles.js"></script>
+    <script type="text/javascript" src="src/js/app.js"></script> 
+</html>

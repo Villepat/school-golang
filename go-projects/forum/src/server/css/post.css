@@ -1,0 +1,87 @@
+.main-post {
+    background-color: rgb(120, 120, 120);
+    border: 1px solid #e1e8ed;
+    border-radius: 3px;
+    margin: 2rem 4rem;
+    padding: 10px;
+    position: relative;
+}
+
+.post-header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom:#e1e8ed 1px solid;
+    padding: 0.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.title-author {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+}
+
+.post-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0.5rem 0.5rem 0rem;
+}
+
+.post-author {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.5rem 0.5rem 0rem;
+}
+
+.post-time {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0.5rem 0.5rem 0rem;
+}
+
+.post-content {
+    font-weight: 500;
+    padding: 0.5rem;
+    white-space: pre-line;
+}
+
+#comment-text , #comment-submit {
+    color: black;
+}
+
+/* Like Button */
+.likeDislike {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border-radius: 5px;
+    width: 120px;
+}
+
+.neutral-up, .neutral-down {
+    padding: 15px;
+    background-color: gray;
+}
+
+.neutral-up:hover, .neutral-down:hover {
+    transition: background-color 0.5s ease;
+    background-color: rgb(69, 69, 69);
+}
+
+.up, .down {
+    padding: 15px;
+    background-color: blue;
+}
+
+.up:hover, .down:hover {
+    transition: background-color 0.5s ease;
+    background-color: rgb(0, 0, 151);
+}
+
+#delete-submit {
+    color: black;
+    float: right;
+}

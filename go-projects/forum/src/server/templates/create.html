@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="../css/nav.css">
+    <link rel="stylesheet" href="../css/create.css" />
+    <title>The Bored Board</title>
+</head>
+
+<body>
+    {{ template "nav.html" . }}
+    <form method="POST" id="createPostForm">
+        <div class="post">
+            <div class="title">
+                <input type="text" placeholder="Title" id="title">
+            </div>
+            <div class="text">
+                <textarea id="content" name="content"
+                    placeholder="Now, write the most boring piece you can!"></textarea>
+            </div>
+            <p>Add your category tags separated by comma</p>
+            <input type="text" placeholder="Write your tags" id="tags" pattern="([a-zA-Z]+, )*[a-zA-Z]+" title="Only words separated by comma">
+            <input class="button" type="submit" value="Post">
+        </div>
+    </form>
+    <script src="../js/create.js"></script>
+</body>
+
+</html>

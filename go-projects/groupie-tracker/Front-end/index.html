@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Tracker of groupies" content="©SlickVick, Christoffer, Ville-Veikko">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Groupie Trackatron 9000</h1>
+  {{range $ind, $all := .}}
+
+  <div class="container">
+    <a class="button" href="#{{$all.Name}}">{{$all.Name}}</a>
+    <img src="{{$all.Image}}" id="{{$all.Id}}" class="img">
+    <div class="box">
+    </div>
+    <div id="{{$all.Name}}" class="overlay">
+      <div class="popup">
+        <h2>Info</h2>
+        <a class="close" href="#">&times;</a>
+        <div class="content" id="{{$all.Id}}">
+          <p><b>Members:</b></p>
+          {{range $all.Members}}
+          <p>{{.}}</p>
+          {{end}}
+          <br>
+          <p><b>Creation Date:</b></p>{{$all.CreationDate}}
+          <br>
+          <p><b>First Album:</b></p>{{$all.FirstAlbum}}
+            <p><b>Concert Locations:</b></p>
+            {{range $loc, $dat := $all.DatesLocations}}
+          <p>
+            {{$loc}}:
+          </p>
+          {{range $dat}}
+            <p>{{.}}</p>
+            {{end}}
+          {{end}}
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  {{end}}
+  </div>
+</body>
+</html>
